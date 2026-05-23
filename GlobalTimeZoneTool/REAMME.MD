@@ -7,11 +7,234 @@
   ![License](https://img.shields.io/badge/License-MIT-green.svg)
   ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20iOS%20%7C%20Web-lightgrey.svg)
 
-  **一款功能强大的全球时区追踪工具**
+  **A Powerful Global Timezone Tracking Tool**
 
   [English](#english-documentation) • [中文文档](#中文文档)
 
 </div>
+
+---
+
+## English Documentation
+
+### 📱 App Introduction
+
+Global Timezone Tool is a cross-platform application built with Kotlin Multiplatform technology, supporting Android, iOS, and Web platforms. Designed for users who frequently need to coordinate time with different parts of the world, it provides real-time timezone conversion, time difference calculation, and multi-city management features.
+
+#### ✨ Core Features
+
+- **🕐 Real-time Time Display** - View current time for multiple cities simultaneously
+- **⏰ Smart Time Difference** - Automatically calculate time differences between cities
+- **🌍 City Management** - Add, remove, and reorder cities from around the world
+- **🎨 Personalization** - 12/24-hour format, seconds display, multi-language support
+- **💾 Data Persistence** - City list and settings are automatically saved
+- **🔔 Crash Reporting** - Integrated Firebase Crashlytics for app stability
+- **🌙 Dark Theme** - Modern Material Design 3 interface
+
+### 🚀 Getting Started
+
+#### Requirements
+
+- **Development Tool**: IntelliJ IDEA / Android Studio
+- **Kotlin Version**: 2.3.20+
+- **Gradle Version**: 8.11.2+
+- **Android SDK**: API 24+ (Android 7.0+)
+- **iOS Version**: iOS 14.0+
+- **Browser**: Chrome/Firefox/Safari (modern web standards support)
+
+#### Clone the Project
+
+```bash
+git clone https://github.com/YingZiGeGe/Globaltimezonetool.git
+cd Globaltimezonetool
+```
+
+#### Build and Run
+
+**Android Application:**
+```bash
+# macOS/Linux
+./gradlew :composeApp:assembleDebug
+
+# Windows
+.\gradlew.bat :composeApp:assembleDebug
+```
+
+**iOS Application:**
+```bash
+# Open iosApp/iosApp.xcworkspace in Xcode and run
+# Or use the command
+./gradlew :composeApp:iosSimulatorArm64Test
+```
+
+**Web Application:**
+```bash
+# Using Wasm target (recommended, better performance)
+./gradlew :composeApp:wasmJsBrowserDevelopmentRun
+
+# Or using JS target
+./gradlew :composeApp:jsBrowserDevelopmentRun
+```
+
+### 📖 User Guide
+
+#### 1. Add Cities
+
+1. Click the `+` button in the bottom right corner
+2. Search for the city you want to add in the city picker
+3. Click the city name to add it to your city list
+
+#### 2. Set Base City
+
+- The base city is used for calculating time differences
+- Click the "⭐ Set as Base" button on any city card
+- The base city will be highlighted with a special indicator
+
+#### 3. Reorder Cities
+
+- Long press the drag handle (≡) on any city card
+- Drag to your desired position
+- Release to complete the reorder
+
+#### 4. Remove Cities
+
+- Click the `×` button in the top right corner of a city card
+- Confirm to remove the city
+
+#### 5. Settings
+
+**Access Settings Page:**
+- Click the `⚙️` settings icon in the top right corner
+
+**Available Settings:**
+- **Time Format**: Toggle between 12/24-hour format
+- **Seconds Display**: Show/hide seconds
+- **Language**: Choose interface language (Chinese, English, etc.)
+- **Privacy Policy**: View privacy policy and terms
+
+#### 6. Time Calculator
+
+Click the `🧮` icon in the top right corner to access the time calculator:
+- Select source and target cities
+- Input time and date
+- Instantly view converted time
+- Automatic daylight saving time adjustment
+
+### 🏗️ Project Structure
+
+```
+Globaltimezonetool/
+├── composeApp/                    # Kotlin Multiplatform application code
+│   ├── src/
+│   │   ├── commonMain/            # Cross-platform shared code
+│   │   ├── androidMain/          # Android specific code
+│   │   ├── iosMain/              # iOS specific code
+│   │   └── jsMain/               # Web specific code
+│   └── build.gradle.kts          # App build configuration
+├── iosApp/                       # iOS application entry point
+├── gradle/                       # Gradle configuration
+│   ├── libs.versions.toml        # Version management
+│   └── wrapper/                  # Gradle Wrapper
+├── build.gradle.kts              # Project build configuration
+└── README.md                     # Project documentation
+```
+
+### 🛠️ Tech Stack
+
+- **Framework**: Kotlin Multiplatform + Compose Multiplatform
+- **UI**: Material Design 3
+- **Navigation**: Voyager
+- **Data Persistence**: Multiplatform Settings
+- **Time Processing**: Kotlinx DateTime
+- **Crash Reporting**: Firebase Crashlytics
+- **Build Tool**: Gradle 8.x
+
+### 📋 Feature Implementation
+
+#### Core Features
+
+**Timezone Data Processing:**
+- Uses IANA timezone database
+- Supports 500+ cities worldwide
+- Automatic daylight saving time handling
+- Real-time time synchronization
+
+**User Interface:**
+- Material Design 3 guidelines
+- Smooth animations
+- Responsive layout
+- Dark theme optimization
+
+**Data Persistence:**
+- Automatic city list saving
+- User settings persistence
+- Base city memory
+- Multi-language support
+
+#### Platform-Specific Features
+
+**Android:**
+- Firebase Crashlytics integration
+- Global exception handling
+- App state preservation
+- Notification support
+
+**iOS:**
+- Native Swift integration
+- Crashlytics framework
+- Local storage fallback
+- Xcode project configuration
+
+**Web:**
+- Browser compatibility optimization
+- Error capture mechanism
+- Local storage support
+- Responsive design
+
+### 🐛 Troubleshooting
+
+#### Common Issues
+
+**Q: Android app fails to compile**
+```bash
+# Clean and rebuild
+./gradlew clean
+./gradlew :composeApp:assembleDebug
+```
+
+**Q: iOS app crashes on startup**
+- Ensure Xcode version is 14.0 or higher
+- Clean Xcode cache: `Product → Clean Build Folder`
+- Reinstall CocoaPods dependencies: `pod install`
+
+**Q: Web app fails to load**
+- Ensure browser supports modern web standards
+- Try a different browser (Chrome recommended)
+- Clear browser cache and retry
+
+**Q: City times are inaccurate**
+- Check device timezone settings
+- Ensure network connection is working
+- Try re-adding the city
+
+### 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+### 👨‍💻 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+### 📞 Contact
+
+- **GitHub**: [YingZiGeGe/Globaltimezonetool](https://github.com/YingZiGeGe/Globaltimezonetool)
+- **Issue Tracker**: [Issues](https://github.com/YingZiGeGe/Globaltimezonetool/issues)
 
 ---
 
@@ -240,229 +463,6 @@ Globaltimezonetool/
 
 ---
 
-## English Documentation
-
-### 📱 App Introduction
-
-Global Timezone Tool is a cross-platform application built with Kotlin Multiplatform technology, supporting Android, iOS, and Web platforms. Designed for users who frequently need to coordinate time with different parts of the world, it provides real-time timezone conversion, time difference calculation, and multi-city management features.
-
-#### ✨ Core Features
-
-- **🕐 Real-time Time Display** - View current time for multiple cities simultaneously
-- **⏰ Smart Time Difference** - Automatically calculate time differences between cities
-- **🌍 City Management** - Add, remove, and reorder cities from around the world
-- **🎨 Personalization** - 12/24-hour format, seconds display, multi-language support
-- **💾 Data Persistence** - City list and settings are automatically saved
-- **🔔 Crash Reporting** - Integrated Firebase Crashlytics for app stability
-- **🌙 Dark Theme** - Modern Material Design 3 interface
-
-### 🚀 Getting Started
-
-#### Requirements
-
-- **Development Tool**: IntelliJ IDEA / Android Studio
-- **Kotlin Version**: 2.3.20+
-- **Gradle Version**: 8.11.2+
-- **Android SDK**: API 24+ (Android 7.0+)
-- **iOS Version**: iOS 14.0+
-- **Browser**: Chrome/Firefox/Safari (modern web standards support)
-
-#### Clone the Project
-
-```bash
-git clone https://github.com/YingZiGeGe/Globaltimezonetool.git
-cd Globaltimezonetool
-```
-
-#### Build and Run
-
-**Android Application:**
-```bash
-# macOS/Linux
-./gradlew :composeApp:assembleDebug
-
-# Windows
-.\gradlew.bat :composeApp:assembleDebug
-```
-
-**iOS Application:**
-```bash
-# Open iosApp/iosApp.xcworkspace in Xcode and run
-# Or use the command
-./gradlew :composeApp:iosSimulatorArm64Test
-```
-
-**Web Application:**
-```bash
-# Using Wasm target (recommended, better performance)
-./gradlew :composeApp:wasmJsBrowserDevelopmentRun
-
-# Or using JS target
-./gradlew :composeApp:jsBrowserDevelopmentRun
-```
-
-### 📖 User Guide
-
-#### 1. Add Cities
-
-1. Click the `+` button in the bottom right corner
-2. Search for the city you want to add in the city picker
-3. Click the city name to add it to your city list
-
-#### 2. Set Base City
-
-- The base city is used for calculating time differences
-- Click the "⭐ Set as Base" button on any city card
-- The base city will be highlighted with a special indicator
-
-#### 3. Reorder Cities
-
-- Long press the drag handle (≡) on any city card
-- Drag to your desired position
-- Release to complete the reorder
-
-#### 4. Remove Cities
-
-- Click the `×` button in the top right corner of a city card
-- Confirm to remove the city
-
-#### 5. Settings
-
-**Access Settings Page:**
-- Click the `⚙️` settings icon in the top right corner
-
-**Available Settings:**
-- **Time Format**: Toggle between 12/24-hour format
-- **Seconds Display**: Show/hide seconds
-- **Language**: Choose interface language (Chinese, English, etc.)
-- **Privacy Policy**: View privacy policy and terms
-
-#### 6. Time Calculator
-
-Click the `🧮` icon in the top right corner to access the time calculator:
-- Select source and target cities
-- Input time and date
-- Instantly view converted time
-- Automatic daylight saving time adjustment
-
-### 🏗️ Project Structure
-
-```
-Globaltimezonetool/
-├── composeApp/                    # Kotlin Multiplatform application code
-│   ├── src/
-│   │   ├── commonMain/            # Cross-platform shared code
-│   │   ├── androidMain/          # Android specific code
-│   │   ├── iosMain/              # iOS specific code
-│   │   └── jsMain/               # Web specific code
-│   └── build.gradle.kts          # App build configuration
-├── iosApp/                       # iOS application entry point
-├── gradle/                       # Gradle configuration
-│   ├── libs.versions.toml        # Version management
-│   └── wrapper/                  # Gradle Wrapper
-├── build.gradle.kts              # Project build configuration
-└── README.md                     # Project documentation
-```
-
-### 🛠️ Tech Stack
-
-- **Framework**: Kotlin Multiplatform + Compose Multiplatform
-- **UI**: Material Design 3
-- **Navigation**: Voyager
-- **Data Persistence**: Multiplatform Settings
-- **Time Processing**: Kotlinx DateTime
-- **Crash Reporting**: Firebase Crashlytics
-- **Build Tool**: Gradle 8.x
-
-### 📋 Feature Implementation
-
-#### Core Features
-
-**Timezone Data Processing:**
-- Uses IANA timezone database
-- Supports 500+ cities worldwide
-- Automatic daylight saving time handling
-- Real-time time synchronization
-
-**User Interface:**
-- Material Design 3 guidelines
-- Smooth animations
-- Responsive layout
-- Dark theme optimization
-
-**Data Persistence:**
-- Automatic city list saving
-- User settings persistence
-- Base city memory
-- Multi-language support
-
-#### Platform-Specific Features
-
-**Android:**
-- Firebase Crashlytics integration
-- Global exception handling
-- App state preservation
-- Notification support
-
-**iOS:**
-- Native Swift integration
-- Crashlytics framework
-- Local storage fallback
-- Xcode project configuration
-
-**Web:**
-- Browser compatibility optimization
-- Error capture mechanism
-- Local storage support
-- Responsive design
-
-### 🐛 Troubleshooting
-
-#### Common Issues
-
-**Q: Android app fails to compile**
-```bash
-# Clean and rebuild
-./gradlew clean
-./gradlew :composeApp:assembleDebug
-```
-
-**Q: iOS app crashes on startup**
-- Ensure Xcode version is 14.0 or higher
-- Clean Xcode cache: `Product → Clean Build Folder`
-- Reinstall CocoaPods dependencies: `pod install`
-
-**Q: Web app fails to load**
-- Ensure browser supports modern web standards
-- Try a different browser (Chrome recommended)
-- Clear browser cache and retry
-
-**Q: City times are inaccurate**
-- Check device timezone settings
-- Ensure network connection is working
-- Try re-adding the city
-
-### 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-### 👨‍💻 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### 📞 Contact
-
-- **GitHub**: [YingZiGeGe/Globaltimezonetool](https://github.com/YingZiGeGe/Globaltimezonetool)
-- **Issue Tracker**: [Issues](https://github.com/YingZiGeGe/Globaltimezonetool/issues)
-
----
-
 <div align="center">
 
 **Made with ❤️ using Kotlin Multiplatform**
@@ -470,3 +470,4 @@ Contributions are welcome! Please follow these steps:
 **⭐ Star us on GitHub!** [YingZiGeGe/Globaltimezonetool](https://github.com/YingZiGeGe/Globaltimezonetool)
 
 </div>
+
